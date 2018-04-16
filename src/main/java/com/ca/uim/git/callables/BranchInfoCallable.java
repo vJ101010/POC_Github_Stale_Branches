@@ -23,19 +23,22 @@ public class BranchInfoCallable implements Callable<Branch>{
 	String gitRestUrl;
 	JSONParser jsonParser=new JSONParser();
 	String basicAuth;
+	String orgName;
 	DateFormat formatter= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 	
-	public BranchInfoCallable(Branch branch,String repoName, String gitRestUrl,String basicAuth) {
+	
+	public BranchInfoCallable(Branch branch,String repoName, String gitRestUrl,String basicAuth,String orgName) {
 		this.branch = branch;
 		this.repoName= repoName;
 		this.gitRestUrl=gitRestUrl;
 		this.basicAuth= basicAuth;
+		this.orgName = orgName;
 	}
 
 	@Override
 	public Branch call() throws Exception {
 		try {
-		URL branchesInfoUrl = new URL(gitRestUrl+"repos/UIM/"+repoName+"/branches/"+branch.getBranchName());
+		URL branchesInfoUrl = new URL(gitRestUrl+"repos/"+orgName+"/"+repoName+"/branches/"+branch.getBranchName());
 		HttpURLConnection branchInfoUrlConn = (HttpURLConnection) branchesInfoUrl.openConnection();
 		branchInfoUrlConn.setRequestProperty("Authorization", basicAuth);
 		JSONObject branchInfo = (JSONObject) jsonParser.parse(readStream(branchInfoUrlConn.getInputStream()));
