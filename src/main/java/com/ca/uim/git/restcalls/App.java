@@ -1,10 +1,5 @@
 package com.ca.uim.git.restcalls;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-
-import org.json.simple.parser.ParseException;
-
 import com.ca.uim.git.datastore.BranchStore;
 import com.ca.uim.git.model.Organization;
 
@@ -16,11 +11,15 @@ import com.ca.uim.git.model.Organization;
  */
 public class App {
 	public static void main(String[] args)
-			throws IOException, ParseException, InterruptedException, ExecutionException, java.text.ParseException {
+			throws Exception {
 		GitRest gitRest = new GitRest();
-		Organization org = gitRest.gitRestCall(args[0], args[1], args[2], Integer.valueOf(args[3]));
+		Encryptor encryptor = new Encryptor();
+		String decryptedPass = encryptor.decrypt(args[1]);
+		Organization org = gitRest.gitRestCall(args[0], decryptedPass, args[2], Integer.valueOf(args[3]));
 		BranchStore branchStore = new BranchStore();
 		branchStore.storeData(org);
+		RallyServiceHook rallyServiceHook = new RallyServiceHook();
+		 rallyServiceHook.createserviceHook(args[0], decryptedPass, args[2],org);
 		System.exit(0);
 	}
 }
