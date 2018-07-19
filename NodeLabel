@@ -1,0 +1,16 @@
+#!/bin/bash
+# Labeling the Nodes in OC cluster
+
+echo "Started Labeling the nodes in OC cluster"
+
+oc label node batvi03-rhelvm01.dev.fco uim-target=uim
+echo "batvi03-rhelvm01.dev.fco is labeled to uim"
+
+oc label node batvi03-rhelvm02.dev.fco uim-target=ump
+echo "batvi03-rhelvm02.dev.fco is labeled to ump"
+
+oc label node batvi03-rhelvm03.dev.fco uim-target=concentrator-1
+echo "batvi03-rhelvm03.dev.fco is labeled to concentrator-1"
+
+oc label node batvi03-rhelvm04.dev.fco uim-target= concentrator-2
+echo "batvi03-rhelvm04.dev.fco is labeled to concentrator-4"
