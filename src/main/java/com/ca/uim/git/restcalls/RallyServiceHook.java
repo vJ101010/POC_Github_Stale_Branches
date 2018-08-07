@@ -8,7 +8,11 @@ import java.util.Base64;
 
 import com.ca.uim.git.model.Organization;
 import com.ca.uim.git.model.Repo;
-
+/**
+ * 
+ * @author batvi03
+ * Class us used for updating the service hook defined in github
+ */
 public class RallyServiceHook {
 
 	public void createserviceHook(String userName, String password, String orgName, Organization org)

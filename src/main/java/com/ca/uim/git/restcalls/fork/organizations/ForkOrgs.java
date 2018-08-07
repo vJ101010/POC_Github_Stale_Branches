@@ -22,6 +22,11 @@ import org.json.simple.parser.ParseException;
 import com.ca.uim.git.callables.GitOrgMembersReposCallable;
 import com.ca.uim.git.model.Repo;
 
+/**
+ * 
+ * @author batvi03
+ * Class is used for priniting repositories assigned with user in github 
+ */
 public class ForkOrgs {
 
 	public static void main(String[] args) throws IOException, ParseException {

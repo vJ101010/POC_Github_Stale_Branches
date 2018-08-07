@@ -29,7 +29,11 @@ import com.ca.uim.git.callables.BranchInfoCallable;
 import com.ca.uim.git.model.Branch;
 import com.ca.uim.git.model.Organization;
 import com.ca.uim.git.model.Repo;
-
+/**
+ * 
+ * @author batvi03
+ *	Class is used for fetching the stale branhces in github based on number of offset days
+ */
 public class GitRest {
 
 	public Organization gitRestCall(String userName, String password, String orgName, int noOfDays)

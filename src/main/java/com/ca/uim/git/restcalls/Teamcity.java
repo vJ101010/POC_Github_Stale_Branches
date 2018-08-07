@@ -14,14 +14,17 @@ import java.util.Map.Entry;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.ws.handler.MessageContext.Scope;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-
+/**
+ * 
+ * @author batvi03
+ *	Class is used for getting roles assigned for user in teamcity
+ */
 public class Teamcity {
 	static Teamcity teamcity = new Teamcity();
 
@@ -63,12 +66,6 @@ public class Teamcity {
 			String[] split = userRestEntry.getValue().split("users/");
 			teamcity.getUserDetails(index++,userRestEntry.getKey(), split[1]);
 		}
-		// return readStream;
-		/*
-		 * String readStream = getReposinFirstPage(orgName, Git_Teamcity_Rest_Urluth);
-		 * JSONArray jsonArray = new JSONArray(readStream); JSONParser jsonParser = new
-		 * JSONParser(); Organization organization = new Organization();
-		 */
 
 	}
 
@@ -101,9 +98,6 @@ public class Teamcity {
 			}
 		} catch (Exception e) {
 			System.out.println("Exception Occured");
-		//	Thread.sleep(20000);
-		//	teamcity.getUserDetails(pmfKey, restUrlForUserDetails);
-			
 			e.printStackTrace();
 		}
 	}
