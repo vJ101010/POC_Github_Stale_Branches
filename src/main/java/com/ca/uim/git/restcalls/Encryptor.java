@@ -31,7 +31,7 @@ public class Encryptor {
 		key = skf.generateSecret(ks);
 	}
 
-	/*public String encrypt(String unencryptedString) {
+	public String encrypt(String unencryptedString) {
 		String encryptedString = null;
 		try {
 			cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -42,7 +42,7 @@ public class Encryptor {
 			e.printStackTrace();
 		}
 		return encryptedString;
-	}*/
+	}
 
 	public String decrypt(String encryptedString) {
 		String decryptedText = null;
