@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Calendar;
@@ -84,12 +86,22 @@ public class GitRest {
 				staleBranches.add(future.get());
 			}
 
-			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
 			for (Branch branch : staleBranches) {
-				Date lastCommitedDate = formatter.parse(branch.getLastCommitedDate());
-				if (lastCommitedDate.compareTo(beginingPeriod) > 0) {
+				LocalDate lastCommitedDate = LocalDate.parse(branch.getLastCommitedDate(),formatter);
+				/*
+				 * Verifying if the last commited day is less than the input day provided
+				 */
+				/* (lastCommitedDate.compareTo(beginingPeriod) > 0) {
+					branches.remove(branch);
+				}*/
+				/*
+				 * Fetching the git commit history based on the input
+				 */
+				if(lastCommitedDate.compareTo(LocalDate.now().minusDays(15)) < 0) {
 					branches.remove(branch);
 				}
+				
 			}
 			repo.setBranchs(branches);
 		}

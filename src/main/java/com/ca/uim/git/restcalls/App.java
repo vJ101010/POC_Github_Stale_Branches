@@ -18,8 +18,8 @@ public class App {
 		Organization org = gitRest.gitRestCall(args[0], decryptedPass, args[2], Integer.valueOf(args[3]));
 		BranchStore branchStore = new BranchStore();
 		branchStore.storeData(org);
-		RallyServiceHook rallyServiceHook = new RallyServiceHook();
-		 rallyServiceHook.createserviceHook(args[0], decryptedPass, args[2],org);
+		//RallyServiceHook rallyServiceHook = new RallyServiceHook();
+		// rallyServiceHook.createserviceHook(args[0], decryptedPass, args[2],org);
 		System.exit(0);
 	}
 }
